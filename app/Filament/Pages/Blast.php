@@ -36,14 +36,14 @@ class Blast extends Page implements HasSchemas
 
     public function mount(): void
     {
-        $this->form->fill([
+        $this->data = [
             'type'    => 'email',
             'subject' => '',
             'body'    => '',
-        ]);
+        ];
     }
 
-    public function form(Schema $schema): Schema
+    public function content(Schema $schema): Schema
     {
         return $schema
             ->statePath('data')
