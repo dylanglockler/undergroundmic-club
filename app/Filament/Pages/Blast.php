@@ -128,7 +128,7 @@ class Blast extends Page implements HasSchemas
             return;
         }
 
-        $sent = 0; $failed = 0;
+        $sent = 0; $failed = 0; $lastError = null;
         foreach ($guests as $guest) {
             try {
                 Mail::to($guest->contact)->send(
@@ -137,11 +137,18 @@ class Blast extends Page implements HasSchemas
                 $sent++;
             } catch (\Exception $e) {
                 $failed++;
+                $lastError = $e->getMessage();
+                \Log::error('Blast email failed', ['guest' => $guest->id, 'error' => $e->getMessage()]);
             }
         }
 
-        $msg = "Sent {$sent} email(s)" . ($failed ? ", {$failed} failed." : '.');
-        Notification::make()->title($msg)->success()->send();
+        if ($sent > 0) {
+            $msg = "Sent {$sent} email(s)" . ($failed ? ", {$failed} failed." : '.');
+            Notification::make()->title($msg)->success()->send();
+        }
+        if ($lastError) {
+            Notification::make()->title("Mail error: {$lastError}")->danger()->send();
+        }
     }
 
     private function openSmsApp(): void
