@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
 
-// Public
 Route::get('/', function () {
     $now = now()->setTimezone('America/Chicago');
     $year = $now->year; $month = $now->month;
@@ -22,12 +20,4 @@ Route::get('/', function () {
 })->name('home');
 
 Route::post('/guests', [GuestController::class, 'store'])->name('guests.store');
-
-// Admin
-Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login');
-Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
-Route::delete('/admin/guests/{guest}', [AdminController::class, 'deleteGuest'])->name('admin.guests.delete');
-Route::post('/admin/draft', [AdminController::class, 'draftMessage'])->name('admin.draft');
-Route::post('/admin/send-emails', [AdminController::class, 'sendEmails'])->name('admin.send-emails');
 
