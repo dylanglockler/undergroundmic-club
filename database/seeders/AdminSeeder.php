@@ -13,16 +13,22 @@ class AdminSeeder extends Seeder
     {
         $role = Role::firstOrCreate(['name' => 'host', 'guard_name' => 'web']);
 
-        $user = User::firstOrCreate(
-            ['email' => 'dylan@storyboldly.org'],
-            [
-                'name'     => 'Dylan',
-                'password' => Hash::make('underground'),
-            ]
-        );
+        $hosts = [
+            ['email' => 'dylan@storyboldly.org',  'name' => 'Dylan'],
+            ['email' => 'cliff.flamer@gmail.com',  'name' => 'Cliff'],
+            ['email' => 'mollyglock@gmail.com',    'name' => 'Molly'],
+        ];
 
-        $user->assignRole($role);
-
-        $this->command->info("Host user ready: {$user->email}");
+        foreach ($hosts as $data) {
+            $user = User::firstOrCreate(
+                ['email' => $data['email']],
+                [
+                    'name'     => $data['name'],
+                    'password' => Hash::make('underground'),
+                ]
+            );
+            $user->assignRole($role);
+            $this->command->info("Host user ready: {$user->email}");
+        }
     }
 }
