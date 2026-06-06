@@ -9,18 +9,18 @@ use Filament\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Filament\Schemas\Contracts\HasSchemas;
+use Filament\Schemas\Concerns\InteractsWithSchemas;
+use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 
-class Blast extends Page implements HasForms
+class Blast extends Page implements HasSchemas
 {
-    use InteractsWithForms;
+    use InteractsWithSchemas;
 
     protected string $view = 'filament.pages.blast';
 
@@ -32,14 +32,22 @@ class Blast extends Page implements HasForms
 
     protected static ?string $title = 'Send a Blast';
 
-    public ?string $type = 'email';
-    public ?string $subject = '';
-    public ?string $body = '';
+    public array $data = [];
 
-    public function form(Form $form): Form
+    public function mount(): void
     {
-        return $form
-            ->schema([
+        $this->form->fill([
+            'type'    => 'email',
+            'subject' => '',
+            'body'    => '',
+        ]);
+    }
+
+    public function form(Schema $schema): Schema
+    {
+        return $schema
+            ->statePath('data')
+            ->components([
                 Select::make('type')
                     ->label('Blast Type')
                     ->options(['email' => 'Email', 'text' => 'Text / SMS'])
@@ -50,28 +58,16 @@ class Blast extends Page implements HasForms
                 TextInput::make('subject')
                     ->label('Subject')
                     ->placeholder('The Underground Mic — Party Reminder')
-                    ->visible(fn () => $this->type === 'email')
-                    ->required(fn () => $this->type === 'email'),
+                    ->visible(fn () => ($this->data['type'] ?? 'email') === 'email')
+                    ->required(fn () => ($this->data['type'] ?? 'email') === 'email'),
 
                 Textarea::make('body')
                     ->label('Message')
-                    ->rows(fn () => $this->type === 'text' ? 3 : 8)
-                    ->maxLength(fn () => $this->type === 'text' ? 160 : null)
-                    ->hint(fn () => $this->type === 'text' ? 'Max 160 characters for SMS' : null)
+                    ->rows(fn () => ($this->data['type'] ?? 'email') === 'text' ? 3 : 8)
+                    ->maxLength(fn () => ($this->data['type'] ?? 'email') === 'text' ? 160 : null)
+                    ->hint(fn () => ($this->data['type'] ?? 'email') === 'text' ? 'Max 160 characters for SMS' : null)
                     ->required(),
-            ])
-            ->statePath('data');
-    }
-
-    public array $data = [];
-
-    public function mount(): void
-    {
-        $this->form->fill([
-            'type'    => 'email',
-            'subject' => '',
-            'body'    => '',
-        ]);
+            ]);
     }
 
     protected function getHeaderActions(): array
@@ -106,9 +102,7 @@ class Blast extends Page implements HasForms
                 ->modalHeading(fn () => 'Send ' . (($this->data['type'] ?? 'email') === 'text' ? 'SMS reminder' : 'email blast') . '?')
                 ->modalDescription(fn () => $this->recipientCount() . ' recipient(s) will receive this message.')
                 ->action(function () {
-                    $this->form->validate();
                     $type = $this->data['type'] ?? 'email';
-
                     if ($type === 'email') {
                         $this->sendEmails();
                     } else {
@@ -120,8 +114,7 @@ class Blast extends Page implements HasForms
 
     private function recipientCount(): int
     {
-        $type = $this->data['type'] ?? 'email';
-        return $type === 'email'
+        return ($this->data['type'] ?? 'email') === 'email'
             ? Guest::whereIn('method', ['email', 'calendar'])->count()
             : Guest::whereNotNull('phone')->where('phone', '!=', '')->count();
     }

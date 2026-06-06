@@ -14,7 +14,7 @@ class AdminSeeder extends Seeder
         $role = Role::firstOrCreate(['name' => 'host', 'guard_name' => 'web']);
 
         $hosts = [
-            ['email' => 'dylan@storyboldly.org',  'name' => 'Dylan'],
+            ['email' => 'dylan@dylanglockler.com',  'name' => 'Dylan'],
             ['email' => 'cliff.flamer@gmail.com',  'name' => 'Cliff'],
             ['email' => 'mollyglock@gmail.com',    'name' => 'Molly'],
         ];
