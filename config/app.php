@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'The Underground Mic'),
+
+    'admin_password' => env('ADMIN_PASSWORD', 'underground'),
 
     /*
     |--------------------------------------------------------------------------
