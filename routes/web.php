@@ -27,8 +27,9 @@ Route::get('/', function () {
         . '&details=' . rawurlencode('Monthly basement speakeasy karaoke party. Members only. Last Saturday of every month, 7PM.');
 
     return view('home', [
-        'nextParty' => $next->format('F j, Y'),
-        'gcalUrl'   => $gcalUrl,
+        'nextParty'      => $next->format('F j, Y'),
+        'gcalUrl'        => $gcalUrl,
+        'partyTimestamp' => $start->timestamp,
     ]);
 })->name('home');
 

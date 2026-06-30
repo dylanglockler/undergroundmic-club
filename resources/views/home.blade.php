@@ -82,7 +82,7 @@
 
     .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(36px, 8vw, 88px);
+      font-size: clamp(28px, 8vw, 88px);
       font-weight: 700;
       line-height: 1;
       color: var(--amber);
@@ -92,8 +92,7 @@
       align-items: baseline;
       justify-content: center;
       gap: 0.25em;
-      flex-wrap: nowrap;
-      white-space: nowrap;
+      flex-wrap: wrap;
     }
 
     .hero-title span {
@@ -207,8 +206,9 @@
       <h1 class="hero-title">The Underground <span>Mic</span></h1>
       <p class="hero-sub">Your Speakeasy Karaoke Club</p>
 
-      <div style="max-width:700px; margin: 32px auto 0; border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,184,48,0.2); box-shadow: 0 0 40px rgba(0,0,0,0.6);">
+      <div style="max-width:700px; margin: 32px auto 0; border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,184,48,0.2); box-shadow: 0 0 40px rgba(0,0,0,0.6); position:relative;">
         <img src="/images/IMG_1020.JPG" alt="The Underground Mic" style="width:100%; display:block; filter: brightness(1.15) contrast(1.05); object-fit:cover; object-position: center 30%;">
+        <div style="position:absolute; bottom:0; left:0; right:0; height:140px; background: linear-gradient(to bottom, transparent, var(--dark)); pointer-events:none;"></div>
       </div>
     </div>
 
@@ -233,7 +233,8 @@
       <div class="info-card">
         <span class="info-card-icon">🎉</span>
         <div class="info-card-label">Next Party</div>
-        <div class="info-card-value" style="font-size:13px">{{ $nextParty }}</div>
+        <div class="info-card-value">{{ $nextParty }}</div>
+        <div id="countdown" style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:500; color:var(--cream); margin-top:4px;"></div>
       </div>
     </div>
 
@@ -299,6 +300,19 @@
               <span class="checkmark">🎉</span>
               <h4>You're on the list!</h4>
               <p id="success-text"></p>
+              <div id="success-cal" style="display:none; margin-top:20px; border-top:1px solid rgba(0,229,204,0.15); padding-top:20px;">
+                <p style="font-family:'Special Elite',cursive; font-size:10px; letter-spacing:2px; color:rgba(0,229,204,0.6); text-transform:uppercase; margin-bottom:14px;">Save the Date</p>
+                <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                  <a id="success-gcal" href="#" target="_blank" rel="noopener" class="cal-btn" style="font-size:10px; padding:8px 16px;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="18" rx="2" fill="white"/><path d="M2 9h20V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3z" fill="#4285F4"/><rect x="7" y="2" width="2" height="4" rx="1" fill="#4285F4"/><rect x="15" y="2" width="2" height="4" rx="1" fill="#4285F4"/><text x="12" y="18" text-anchor="middle" font-size="8" font-weight="700" fill="#4285F4" font-family="Arial,sans-serif">31</text></svg>
+                    Google Calendar
+                  </a>
+                  <a href="/calendar.ics" class="cal-btn" style="font-size:10px; padding:8px 16px;" download>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="18" rx="2" fill="white"/><path d="M2 9h20V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3z" fill="#FF3B30"/><rect x="7" y="2" width="2" height="4" rx="1" fill="#FF3B30"/><rect x="15" y="2" width="2" height="4" rx="1" fill="#FF3B30"/><text x="12" y="18" text-anchor="middle" font-size="8" font-weight="700" fill="#1C1C1E" font-family="Arial,sans-serif">31</text></svg>
+                    Apple Calendar
+                  </a>
+                </div>
+              </div>
             </div>
 
             <div id="form-fields">
@@ -342,6 +356,25 @@
 </div>
 
 <script>
+const gcalUrl = "{{ $gcalUrl }}";
+document.getElementById('success-gcal').href = gcalUrl;
+
+const partyTime = new Date({{ $partyTimestamp }} * 1000);
+
+function updateCountdown() {
+  const el = document.getElementById('countdown');
+  if (!el) return;
+  const diff = partyTime - new Date();
+  if (diff <= 0) { el.textContent = "It's tonight!"; return; }
+  const days    = Math.floor(diff / 86400000);
+  const hours   = Math.floor((diff % 86400000) / 3600000);
+  const minutes = Math.floor((diff % 3600000) / 60000);
+  const seconds = Math.floor((diff % 60000) / 1000);
+  el.textContent = `${days}d : ${String(hours).padStart(2,'0')}h : ${String(minutes).padStart(2,'0')}m : ${String(seconds).padStart(2,'0')}s`;
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
 let currentTab = 'email';
 
 const tabConfig = {
@@ -414,6 +447,7 @@ async function handleSubmit() {
     document.getElementById('form-fields').style.display = 'none';
     document.getElementById('success-text').textContent = data.message || "See you at The Underground Mic!";
     document.getElementById('success-msg').style.display = 'block';
+    document.getElementById('success-cal').style.display = 'block';
 
   } catch (e) {
     showError('Network error. Please try again.');
