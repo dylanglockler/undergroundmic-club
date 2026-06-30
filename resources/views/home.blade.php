@@ -256,8 +256,6 @@
         <div id="signup-form">
           <div class="tabs">
             <button class="tab active" data-tab="email" onclick="switchTab('email', this)">📧 Sign Up</button>
-            <button class="tab" data-tab="calendar" onclick="switchTab('calendar', this)">📅 Calendar</button>
-            <button class="tab" data-tab="text" onclick="switchTab('text', this)">📱 Text</button>
           </div>
 
           <div class="form-body">
@@ -313,8 +311,6 @@ let currentTab = 'email';
 
 const tabConfig = {
   email:    { label: 'Your Email Address', placeholder: 'yourname@email.com', type: 'email' },
-  calendar: { label: 'Google Calendar Email', placeholder: 'yourname@gmail.com', type: 'email' },
-  text:     { label: 'Your Phone Number', placeholder: '(555) 123-4567', type: 'tel' },
 };
 
 function switchTab(tab, el) {
