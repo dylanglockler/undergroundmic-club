@@ -190,6 +190,10 @@
     .footer p { font-size: 12px; color: rgba(245,234,215,0.27); letter-spacing: 1px; margin-bottom: 8px; }
     .admin-link { background: none; border: none; color: rgba(245,234,215,0.2); font-size: 11px; cursor: pointer; letter-spacing: 2px; font-family: 'Special Elite', cursive; text-decoration: none; transition: color 0.2s; }
     .admin-link:hover { color: var(--amber); }
+
+    .cal-btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Special Elite', cursive; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); border: 1px solid rgba(0,229,204,0.33); padding: 10px 24px; border-radius: 2px; background: rgba(0,229,204,0.06); text-decoration: none; transition: all 0.2s; }
+    .cal-btn:hover { background: rgba(0,229,204,0.13); box-shadow: 0 0 20px rgba(0,229,204,0.18); }
+    .cal-btn svg { flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -202,6 +206,10 @@
       <span class="mic-icon">🎤</span>
       <h1 class="hero-title">The Underground <span>Mic</span></h1>
       <p class="hero-sub">Your Speakeasy Karaoke Club</p>
+
+      <div style="max-width:700px; margin: 32px auto 0; border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,184,48,0.2); box-shadow: 0 0 40px rgba(0,0,0,0.6);">
+        <img src="/images/IMG_1020.JPG" alt="The Underground Mic" style="width:100%; display:block; filter: brightness(1.15) contrast(1.05); object-fit:cover; object-position: center 30%;">
+      </div>
     </div>
 
     <div class="divider">
@@ -227,6 +235,33 @@
         <div class="info-card-label">Next Party</div>
         <div class="info-card-value" style="font-size:13px">{{ $nextParty }}</div>
       </div>
+    </div>
+
+    <!-- Add to Calendar -->
+    <div style="text-align:center; margin: -10px auto 50px; padding: 0 20px;">
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <a href="{{ $gcalUrl }}" target="_blank" rel="noopener" class="cal-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="4" width="20" height="18" rx="2" fill="white"/>
+            <path d="M2 9h20V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3z" fill="#4285F4"/>
+            <rect x="7" y="2" width="2" height="4" rx="1" fill="#4285F4"/>
+            <rect x="15" y="2" width="2" height="4" rx="1" fill="#4285F4"/>
+            <text x="12" y="18" text-anchor="middle" font-size="8" font-weight="700" fill="#4285F4" font-family="Arial,sans-serif">31</text>
+          </svg>
+          Add to Google Calendar
+        </a>
+        <a href="/calendar.ics" class="cal-btn" download>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="4" width="20" height="18" rx="2" fill="white"/>
+            <path d="M2 9h20V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3z" fill="#FF3B30"/>
+            <rect x="7" y="2" width="2" height="4" rx="1" fill="#FF3B30"/>
+            <rect x="15" y="2" width="2" height="4" rx="1" fill="#FF3B30"/>
+            <text x="12" y="18" text-anchor="middle" font-size="8" font-weight="700" fill="#1C1C1E" font-family="Arial,sans-serif">31</text>
+          </svg>
+          Add to Apple Calendar
+        </a>
+      </div>
+      <p style="font-size:11px; color:rgba(245,234,215,0.3); margin-top:12px; letter-spacing:1px;">Show up when you can. Sign up and we'll remind you.</p>
     </div>
 
     <!-- House Rules -->

@@ -1,4 +1,6 @@
 *.log
+/undergroundmic
+/database/database.sqlite
 .DS_Store
 .env
 .env.backup
