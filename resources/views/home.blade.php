@@ -155,7 +155,7 @@
     .reminder-card { background: var(--dark-card); border: 1px solid rgba(0,229,204,0.2); border-radius: 6px; overflow: hidden; position: relative; }
     .reminder-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(0,229,204,0.53), transparent); }
     .reminder-header { padding: 28px 28px 0; text-align: center; }
-    .reminder-header h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-style: italic; color: var(--teal); margin-bottom: 6px; text-shadow: 0 0 20px rgba(0,229,204,0.38); }
+    .reminder-header h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-style: italic; color: var(--teal); margin-bottom: 6px; text-shadow: 0 0 20px rgba(0,229,204,0.38); }
     .reminder-header p { font-size: 14px; color: rgba(245,234,215,0.47); margin-bottom: 24px; }
 
     /* Tabs */
@@ -190,6 +190,21 @@
     .admin-link { background: none; border: none; color: rgba(245,234,215,0.2); font-size: 11px; cursor: pointer; letter-spacing: 2px; font-family: 'Special Elite', cursive; text-decoration: none; transition: color 0.2s; }
     .admin-link:hover { color: var(--amber); }
 
+    .carousel { position: relative; width: 100%; max-width: 700px; height: 420px; margin: 32px auto 0; border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,184,48,0.2); box-shadow: 0 0 40px rgba(0,0,0,0.6); }
+    .carousel-track { display: flex; height: 100%; transition: transform 0.4s ease; will-change: transform; }
+    .carousel-slide { flex: 0 0 100%; height: 100%; position: relative; overflow: hidden; }
+    .carousel-slide img, .carousel-slide video { width: 100%; height: 100%; object-fit: cover; object-position: 75% 55%; display: block; }
+    .carousel-slide img { filter: brightness(1.15) contrast(1.05); }
+    .carousel-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 140px; background: linear-gradient(to bottom, transparent, var(--dark)); pointer-events: none; }
+    .carousel-caption { position: absolute; bottom: 24px; left: 24px; right: 60px; font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; color: var(--cream); text-shadow: 0 1px 6px rgba(0,0,0,0.8); z-index: 2; }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.45); border: 1px solid rgba(255,184,48,0.3); color: var(--amber); font-size: 28px; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: all 0.2s; line-height: 1; }
+    .carousel-btn:hover { background: rgba(255,184,48,0.2); }
+    .carousel-prev { left: 12px; }
+    .carousel-next { right: 12px; }
+    .carousel-dots { position: absolute; bottom: 14px; right: 16px; display: flex; gap: 7px; z-index: 10; }
+    .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s; border: none; padding: 0; }
+    .carousel-dot.active { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
+
     .cal-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Special Elite', cursive; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; white-space: nowrap; color: var(--teal); border: 1px solid rgba(0,229,204,0.33); padding: 13px 28px; border-radius: 2px; background: rgba(0,229,204,0.06); text-decoration: none; transition: all 0.2s; width: 320px; }
     .cal-btn:hover { background: rgba(0,229,204,0.13); box-shadow: 0 0 20px rgba(0,229,204,0.18); }
     .cal-btn svg { flex-shrink: 0; }
@@ -206,9 +221,77 @@
       <h1 class="hero-title">The Underground <span>Mic</span></h1>
       <p class="hero-sub">Your Speakeasy Karaoke Club</p>
 
-      <div style="max-width:700px; margin: 32px auto 0; border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,184,48,0.2); box-shadow: 0 0 40px rgba(0,0,0,0.6); position:relative;">
-        <img src="/images/IMG_1020.JPG" alt="The Underground Mic" style="width:100%; display:block; filter: brightness(1.15) contrast(1.05); object-fit:cover; object-position: center 30%;">
-        <div style="position:absolute; bottom:0; left:0; right:0; height:140px; background: linear-gradient(to bottom, transparent, var(--dark)); pointer-events:none;"></div>
+      <div class="carousel" id="carousel">
+        <div class="carousel-track" id="carousel-track">
+
+          <div class="carousel-slide">
+            <video autoplay muted loop playsinline>
+              <source src="/images/IMG_9554.mp4" type="video/mp4">
+            </video>
+            <div class="carousel-fade"></div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="/images/IMG_1020.JPG" alt="The Underground Mic">
+            <div class="carousel-fade"></div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="/images/IMG_8728.jpeg" alt="The Underground Mic">
+            <div class="carousel-fade"></div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="/images/IMG_1585.jpeg" alt="The Underground Mic" style="object-position: 75% 15%;">
+            <div class="carousel-fade"></div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="/images/IMG_3881.jpeg" alt="The Underground Mic">
+            <div class="carousel-fade"></div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="/images/IMG_7609.jpeg" alt="The Underground Mic" style="object-position: 75% 20%;">
+            <div class="carousel-fade"></div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="/images/IMG_1939.jpeg" alt="The Underground Mic">
+            <div class="carousel-fade"></div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="/images/IMG_0992.jpeg" alt="The Underground Mic" style="object-position: 75% 15%;">
+            <div class="carousel-fade"></div>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="/images/IMG_4202.JPG" alt="The Underground Mic">
+            <div class="carousel-fade"></div>
+          </div>
+
+
+          <div class="carousel-slide">
+            <img src="/images/IMG_6782.jpeg" alt="The Underground Mic">
+            <div class="carousel-fade"></div>
+          </div>
+
+        </div>
+        <button class="carousel-btn carousel-prev" onclick="carouselPrev()">&#8249;</button>
+        <button class="carousel-btn carousel-next" onclick="carouselNext()">&#8250;</button>
+        <div class="carousel-dots" id="carousel-dots">
+          <button class="carousel-dot active" onclick="carouselGoTo(0)"></button>
+          <button class="carousel-dot" onclick="carouselGoTo(1)"></button>
+          <button class="carousel-dot" onclick="carouselGoTo(2)"></button>
+          <button class="carousel-dot" onclick="carouselGoTo(3)"></button>
+          <button class="carousel-dot" onclick="carouselGoTo(4)"></button>
+          <button class="carousel-dot" onclick="carouselGoTo(5)"></button>
+          <button class="carousel-dot" onclick="carouselGoTo(6)"></button>
+          <button class="carousel-dot" onclick="carouselGoTo(7)"></button>
+          <button class="carousel-dot" onclick="carouselGoTo(8)"></button>
+          <button class="carousel-dot" onclick="carouselGoTo(9)"></button>
+        </div>
       </div>
     </div>
 
@@ -234,7 +317,6 @@
         <span class="info-card-icon">🎉</span>
         <div class="info-card-label">Next Party</div>
         <div class="info-card-value">{{ $nextParty }}</div>
-        <div id="countdown" style="font-family:'DM Sans',sans-serif; font-size:18px; font-weight:500; color:var(--cream); margin-top:4px;"></div>
       </div>
     </div>
 
@@ -262,18 +344,18 @@
           Add to Apple Calendar
         </a>
       </div>
-      <p style="font-size:14px; color:rgba(245,234,215,0.3); margin-top:12px; letter-spacing:1px;">Show up when you can. Sign up and we'll remind you.</p>
+      <p style="font-size:14px; color:rgba(245,234,215,0.3); margin-top:12px; letter-spacing:1px;">Show up when you can. Sign up for reminders.</p>
     </div>
 
     <!-- House Rules -->
     <div class="rules-section">
       <h2 class="section-title">House Rules</h2>
       <ul class="rules-list">
-        <li class="rule-item"><span class="rule-num">01</span><span class="rule-text">What happens at The Underground Mic, stays at The Underground Mic.</span></li>
-        <li class="rule-item"><span class="rule-num">02</span><span class="rule-text">No judgment. We're all here to have a good time, not to audition for The Voice.</span></li>
-        <li class="rule-item"><span class="rule-num">03</span><span class="rule-text">Invite only — don't post the address publicly. Tell your people personally.</span></li>
-        <li class="rule-item"><span class="rule-num">04</span><span class="rule-text">BYOB is encouraged. Sharing is the speakeasy way.</span></li>
-        <li class="rule-item"><span class="rule-num">05</span><span class="rule-text">Cheer loud for every performer. The vibe you bring is the vibe we keep.</span></li>
+        <li class="rule-item"><span class="rule-num">01</span><span class="rule-text">No judgment. We're all here to have a good time, not to audition for The Voice.</span></li>
+        <li class="rule-item"><span class="rule-num">02</span><span class="rule-text">Singers, fans, teens, kids, well-trained pups... come as you are. There's room at the inn.</span></li>
+        <li class="rule-item"><span class="rule-num">03</span><span class="rule-text">Invite only — don't post the address publicly. Tell your friends personally. Sharing is the Speakeasy way.</span></li>
+        <li class="rule-item"><span class="rule-num">04</span><span class="rule-text">We got the booze, beer, and wine. Bring something if you want, or just roll up.</span></li>
+        <li class="rule-item"><span class="rule-num">05</span><span class="rule-text">Cheer loudly for every performer. The vibe you bring is the vibe we share.</span></li>
       </ul>
     </div>
 
@@ -345,6 +427,11 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div style="text-align:center; padding: 60px 20px 20px;">
+      <p style="font-family:'Playfair Display',serif; font-size:28px; font-style:italic; font-weight:700; color:var(--amber); margin-bottom:12px; text-shadow: 0 0 20px rgba(255,184,48,0.38), 0 0 60px rgba(255,184,48,0.2);">See You At The Next One</p>
+      <div id="countdown" style="font-family:'DM Sans',sans-serif; font-size:18px; font-weight:500; color:var(--cream); margin-bottom:8px;"></div>
     </div>
 
     <div class="footer">
@@ -461,6 +548,27 @@ function showError(msg) {
   el.textContent = msg;
   el.style.display = 'block';
 }
+
+// Carousel
+let carouselIndex = 0;
+function carouselGoTo(index) {
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dots   = document.querySelectorAll('.carousel-dot');
+  carouselIndex = (index + slides.length) % slides.length;
+  document.getElementById('carousel-track').style.transform = `translateX(-${carouselIndex * 100}%)`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === carouselIndex));
+}
+function carouselNext() { carouselGoTo(carouselIndex + 1); }
+function carouselPrev() { carouselGoTo(carouselIndex - 1); }
+
+// Swipe support
+let touchStartX = 0;
+const carouselTrack = document.getElementById('carousel-track');
+carouselTrack.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+carouselTrack.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) diff > 0 ? carouselNext() : carouselPrev();
+});
 </script>
 </body>
 </html>
