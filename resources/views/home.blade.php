@@ -204,6 +204,7 @@
     .carousel-dots { position: absolute; bottom: 14px; right: 16px; display: flex; gap: 7px; z-index: 10; }
     .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s; border: none; padding: 0; }
     .carousel-dot.active { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
+    @media (max-width: 600px) { .slide-4202 img { object-position: 20% 55%; } .slide-8728 img { object-position: 20% 55%; } }
 
     .cal-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Special Elite', cursive; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; white-space: nowrap; color: var(--teal); border: 1px solid rgba(0,229,204,0.33); padding: 13px 28px; border-radius: 2px; background: rgba(0,229,204,0.06); text-decoration: none; transition: all 0.2s; width: 320px; }
     .cal-btn:hover { background: rgba(0,229,204,0.13); box-shadow: 0 0 20px rgba(0,229,204,0.18); }
@@ -236,7 +237,7 @@
             <div class="carousel-fade"></div>
           </div>
 
-          <div class="carousel-slide">
+          <div class="carousel-slide slide-8728">
             <img src="/images/IMG_8728.jpeg" alt="The Underground Mic">
             <div class="carousel-fade"></div>
           </div>
@@ -266,7 +267,7 @@
             <div class="carousel-fade"></div>
           </div>
 
-          <div class="carousel-slide">
+          <div class="carousel-slide slide-4202">
             <img src="/images/IMG_4202.JPG" alt="The Underground Mic">
             <div class="carousel-fade"></div>
           </div>
@@ -563,9 +564,9 @@ function carouselPrev() { carouselGoTo(carouselIndex - 1); }
 
 // Swipe support
 let touchStartX = 0;
-const carouselTrack = document.getElementById('carousel-track');
-carouselTrack.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-carouselTrack.addEventListener('touchend', e => {
+const carouselEl = document.getElementById('carousel');
+carouselEl.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+carouselEl.addEventListener('touchend', e => {
   const diff = touchStartX - e.changedTouches[0].clientX;
   if (Math.abs(diff) > 40) diff > 0 ? carouselNext() : carouselPrev();
 });
