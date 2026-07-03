@@ -258,7 +258,7 @@
           </div>
 
           <div class="carousel-slide">
-            <img src="/images/IMG_0505.jpeg" alt="The Underground Mic" style="transform: scale(1.25); transform-origin: center center;">
+            <img src="/images/IMG_0505.jpeg" alt="The Underground Mic" style="object-position: center center; transform: scale(1.25); transform-origin: center center;">
             <div class="carousel-fade"></div>
           </div>
 
