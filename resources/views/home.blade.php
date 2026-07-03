@@ -137,7 +137,7 @@
     .info-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(255,184,48,0.53), transparent); }
     .info-card-icon { font-size: 28px; margin-bottom: 10px; display: block; }
     .info-card-label { font-family: 'Special Elite', cursive; font-size: 10px; letter-spacing: 3px; color: rgba(255,184,48,0.6); text-transform: uppercase; margin-bottom: 6px; }
-    .info-card-value { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; color: var(--cream); line-height: 1.4; }
+    .info-card-value { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--cream); line-height: 1.4; }
 
     /* Rules */
     .rules-section { max-width: 600px; margin: 0 auto 50px; padding: 0 20px; }
@@ -145,7 +145,7 @@
     .rules-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .rule-item { display: flex; align-items: flex-start; gap: 14px; background: var(--dark-card); border: 1px solid var(--mid); border-radius: 4px; padding: 14px 18px; }
     .rule-num { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: rgba(255,45,85,0.53); line-height: 1; flex-shrink: 0; }
-    .rule-text { font-size: 14px; color: rgba(245,234,215,0.8); line-height: 1.5; padding-top: 2px; }
+    .rule-text { font-size: 16px; color: rgba(245,234,215,0.8); line-height: 1.5; padding-top: 2px; }
 
     /* Neon bar */
     .neon-bar { height: 1px; background: linear-gradient(90deg, transparent, var(--red), var(--amber), var(--teal), transparent); max-width: 400px; margin: 0 auto; opacity: 0.6; }
@@ -156,18 +156,18 @@
     .reminder-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(0,229,204,0.53), transparent); }
     .reminder-header { padding: 28px 28px 0; text-align: center; }
     .reminder-header h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-style: italic; color: var(--teal); margin-bottom: 6px; text-shadow: 0 0 20px rgba(0,229,204,0.38); }
-    .reminder-header p { font-size: 13px; color: rgba(245,234,215,0.47); margin-bottom: 24px; }
+    .reminder-header p { font-size: 14px; color: rgba(245,234,215,0.47); margin-bottom: 24px; }
 
     /* Tabs */
     .tabs { display: flex; border-bottom: 1px solid var(--mid); margin: 0 28px; }
-    .tab { flex: 1; padding: 10px 8px; font-family: 'Special Elite', cursive; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,234,215,0.33); background: none; border: none; cursor: pointer; transition: all 0.2s; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+    .tab { flex: 1; padding: 10px 8px; font-family: 'Special Elite', cursive; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,234,215,0.33); background: none; border: none; cursor: pointer; transition: all 0.2s; border-bottom: 2px solid transparent; margin-bottom: -1px; }
     .tab.active { color: var(--teal); border-bottom-color: var(--teal); }
     .tab:hover:not(.active) { color: rgba(245,234,215,0.6); }
 
     /* Form */
     .form-body { padding: 24px 28px 28px; }
     .field { margin-bottom: 16px; }
-    .field label { display: block; font-family: 'Special Elite', cursive; font-size: 10px; letter-spacing: 2px; color: rgba(255,184,48,0.6); text-transform: uppercase; margin-bottom: 8px; }
+    .field label { display: block; font-family: 'Special Elite', cursive; font-size: 13px; font-weight: 700; letter-spacing: 2px; color: rgba(255,184,48,0.6); text-transform: uppercase; margin-bottom: 8px; }
     .field input, .field select { width: 100%; background: var(--mid); border: 1px solid rgba(255,184,48,0.2); border-radius: 3px; padding: 12px 14px; color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; }
     .field input::placeholder { color: rgba(245,234,215,0.27); }
     .field input:focus, .field select:focus { border-color: rgba(0,229,204,0.47); box-shadow: 0 0 0 3px rgba(0,229,204,0.09); }
@@ -186,11 +186,11 @@
 
     /* Footer */
     .footer { text-align: center; margin-top: 60px; padding: 0 20px; }
-    .footer p { font-size: 12px; color: rgba(245,234,215,0.27); letter-spacing: 1px; margin-bottom: 8px; }
+    .footer p { font-size: 14px; color: rgba(245,234,215,0.27); letter-spacing: 1px; margin-bottom: 8px; }
     .admin-link { background: none; border: none; color: rgba(245,234,215,0.2); font-size: 11px; cursor: pointer; letter-spacing: 2px; font-family: 'Special Elite', cursive; text-decoration: none; transition: color 0.2s; }
     .admin-link:hover { color: var(--amber); }
 
-    .cal-btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Special Elite', cursive; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); border: 1px solid rgba(0,229,204,0.33); padding: 10px 24px; border-radius: 2px; background: rgba(0,229,204,0.06); text-decoration: none; transition: all 0.2s; }
+    .cal-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Special Elite', cursive; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; white-space: nowrap; color: var(--teal); border: 1px solid rgba(0,229,204,0.33); padding: 13px 28px; border-radius: 2px; background: rgba(0,229,204,0.06); text-decoration: none; transition: all 0.2s; width: 320px; }
     .cal-btn:hover { background: rgba(0,229,204,0.13); box-shadow: 0 0 20px rgba(0,229,204,0.18); }
     .cal-btn svg { flex-shrink: 0; }
   </style>
@@ -234,7 +234,7 @@
         <span class="info-card-icon">🎉</span>
         <div class="info-card-label">Next Party</div>
         <div class="info-card-value">{{ $nextParty }}</div>
-        <div id="countdown" style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:500; color:var(--cream); margin-top:4px;"></div>
+        <div id="countdown" style="font-family:'DM Sans',sans-serif; font-size:18px; font-weight:500; color:var(--cream); margin-top:4px;"></div>
       </div>
     </div>
 
@@ -262,7 +262,7 @@
           Add to Apple Calendar
         </a>
       </div>
-      <p style="font-size:11px; color:rgba(245,234,215,0.3); margin-top:12px; letter-spacing:1px;">Show up when you can. Sign up and we'll remind you.</p>
+      <p style="font-size:14px; color:rgba(245,234,215,0.3); margin-top:12px; letter-spacing:1px;">Show up when you can. Sign up and we'll remind you.</p>
     </div>
 
     <!-- House Rules -->
@@ -291,7 +291,7 @@
 
         <div id="signup-form">
           <div class="tabs">
-            <button class="tab active" data-tab="email" onclick="switchTab('email', this)">📧 Sign Up</button>
+            <button class="tab active" data-tab="email" onclick="switchTab('email', this)">Sign Up</button>
           </div>
 
           <div class="form-body">
