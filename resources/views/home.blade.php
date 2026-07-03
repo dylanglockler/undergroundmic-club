@@ -204,7 +204,7 @@
     .carousel-dots { position: absolute; bottom: 14px; right: 16px; display: flex; gap: 7px; z-index: 10; }
     .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s; border: none; padding: 0; }
     .carousel-dot.active { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
-    @media (max-width: 600px) { .slide-4202 img { object-position: 20% 55%; } .slide-8728 img { object-position: 20% 55%; } .slide-video video { object-position: 15% 20%; } .slide-6782 img { object-position: 20% 55%; } }
+    @media (max-width: 600px) { .slide-4202 img { object-position: 20% 55%; } .slide-8728 img { object-position: 20% 55%; } .slide-video video { object-position: 39% 20%; } .slide-6782 img { object-position: 20% 55%; } }
 
     .cal-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Special Elite', cursive; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; white-space: nowrap; color: var(--teal); border: 1px solid rgba(0,229,204,0.33); padding: 13px 28px; border-radius: 2px; background: rgba(0,229,204,0.06); text-decoration: none; transition: all 0.2s; width: 320px; }
     .cal-btn:hover { background: rgba(0,229,204,0.13); box-shadow: 0 0 20px rgba(0,229,204,0.18); }
