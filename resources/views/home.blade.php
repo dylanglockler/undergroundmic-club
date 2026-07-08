@@ -104,8 +104,10 @@
 
     .hero-sub {
       font-family: 'Special Elite', cursive;
-      font-size: 13px;
-      letter-spacing: 3px;
+      font-size: clamp(13px, 4vw, 18px);
+      font-weight: 700;
+      letter-spacing: clamp(1.5px, 0.6vw, 3px);
+      white-space: nowrap;
       color: var(--teal);
       text-transform: uppercase;
       margin-bottom: 40px;
