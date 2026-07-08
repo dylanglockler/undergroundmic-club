@@ -196,7 +196,7 @@
     .carousel-slide img, .carousel-slide video { width: 100%; height: 100%; object-fit: cover; object-position: 75% 55%; display: block; }
     .carousel-slide img { filter: brightness(1.15) contrast(1.05); }
     .carousel-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 140px; background: linear-gradient(to bottom, transparent, var(--dark)); pointer-events: none; }
-    .carousel-caption { position: absolute; bottom: 24px; left: 24px; right: 60px; font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; color: var(--cream); text-shadow: 0 1px 6px rgba(0,0,0,0.8); z-index: 2; }
+    .carousel-caption { position: absolute; bottom: 28px; left: 24px; right: 24px; font-family: 'Special Elite', cursive; font-size: clamp(18px, 4.5vw, 30px); font-style: normal; letter-spacing: 1px; line-height: 1.15; text-align: left; color: rgba(245,234,215,0.72); text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 4px 20px rgba(0,0,0,0.7); z-index: 2; }
     .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.45); border: 1px solid rgba(255,184,48,0.3); color: var(--amber); font-size: 28px; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: all 0.2s; line-height: 1; }
     .carousel-btn:hover { background: rgba(255,184,48,0.2); }
     .carousel-prev { left: 12px; }
@@ -235,52 +235,62 @@
           <div class="carousel-slide">
             <img src="/images/IMG_1020.JPG" alt="The Underground Mic">
             <div class="carousel-fade"></div>
+            <div class="carousel-caption">Sing with friends</div>
           </div>
 
           <div class="carousel-slide slide-8728">
             <img src="/images/IMG_8728.jpeg" alt="The Underground Mic">
             <div class="carousel-fade"></div>
+            <div class="carousel-caption">All ages welcome</div>
           </div>
 
           <div class="carousel-slide">
             <img src="/images/IMG_1585.jpeg" alt="The Underground Mic" style="object-position: 75% 15%;">
             <div class="carousel-fade"></div>
+            <div class="carousel-caption">35,000+ songs</div>
           </div>
 
           <div class="carousel-slide">
             <img src="/images/IMG_3881.jpeg" alt="The Underground Mic">
             <div class="carousel-fade"></div>
+            <div class="carousel-caption">Air guitars available</div>
           </div>
 
           <div class="carousel-slide">
             <img src="/images/IMG_7609.jpeg" alt="The Underground Mic" style="object-position: 75% 20%;">
             <div class="carousel-fade"></div>
+            <div class="carousel-caption">Duets (and trios) encouraged</div>
           </div>
 
           <div class="carousel-slide">
             <img src="/images/IMG_0505.jpeg" alt="The Underground Mic" style="object-position: center center; transform: scale(1.25); transform-origin: center center;">
             <div class="carousel-fade"></div>
+            <div class="carousel-caption">Inner divas released</div>
           </div>
 
           <div class="carousel-slide">
             <img src="/images/IMG_1939.jpeg" alt="The Underground Mic">
             <div class="carousel-fade"></div>
+            <div class="carousel-caption">Get your glow on</div>
           </div>
 
           <div class="carousel-slide">
             <img src="/images/IMG_0992.jpeg" alt="The Underground Mic" style="object-position: 75% 15%;">
             <div class="carousel-fade"></div>
+            <div class="carousel-caption">Or just laugh your ass off</div>
           </div>
 
           <div class="carousel-slide slide-4202">
             <img src="/images/IMG_4202.JPG" alt="The Underground Mic">
             <div class="carousel-fade"></div>
+            <div class="carousel-caption">The bar is open...</div>
           </div>
 
 
           <div class="carousel-slide slide-6782">
             <img src="/images/IMG_6782.jpeg" alt="The Underground Mic">
             <div class="carousel-fade"></div>
+            <div class="carousel-caption">Let's rock!</div>
           </div>
 
         </div>
@@ -325,33 +335,6 @@
         <div class="info-card-label">Next Party</div>
         <div class="info-card-value">{{ $nextParty }}</div>
       </div>
-    </div>
-
-    <!-- Add to Calendar -->
-    <div style="text-align:center; margin: -10px auto 50px; padding: 0 20px;">
-      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <a href="{{ $gcalUrl }}" target="_blank" rel="noopener" class="cal-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="4" width="20" height="18" rx="2" fill="white"/>
-            <path d="M2 9h20V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3z" fill="#4285F4"/>
-            <rect x="7" y="2" width="2" height="4" rx="1" fill="#4285F4"/>
-            <rect x="15" y="2" width="2" height="4" rx="1" fill="#4285F4"/>
-            <text x="12" y="18" text-anchor="middle" font-size="8" font-weight="700" fill="#4285F4" font-family="Arial,sans-serif">31</text>
-          </svg>
-          Add to Google Calendar
-        </a>
-        <a href="/calendar.ics" class="cal-btn" download>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="4" width="20" height="18" rx="2" fill="white"/>
-            <path d="M2 9h20V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3z" fill="#FF3B30"/>
-            <rect x="7" y="2" width="2" height="4" rx="1" fill="#FF3B30"/>
-            <rect x="15" y="2" width="2" height="4" rx="1" fill="#FF3B30"/>
-            <text x="12" y="18" text-anchor="middle" font-size="8" font-weight="700" fill="#1C1C1E" font-family="Arial,sans-serif">31</text>
-          </svg>
-          Add to Apple Calendar
-        </a>
-      </div>
-      <p style="font-size:14px; color:rgba(245,234,215,0.3); margin-top:12px; letter-spacing:1px;">Show up when you can. Sign up for reminders.</p>
     </div>
 
     <!-- House Rules -->
@@ -434,6 +417,33 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Add to Calendar -->
+    <div style="text-align:center; margin: 40px auto 0; padding: 0 20px;">
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <a href="{{ $gcalUrl }}" target="_blank" rel="noopener" class="cal-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="4" width="20" height="18" rx="2" fill="white"/>
+            <path d="M2 9h20V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3z" fill="#4285F4"/>
+            <rect x="7" y="2" width="2" height="4" rx="1" fill="#4285F4"/>
+            <rect x="15" y="2" width="2" height="4" rx="1" fill="#4285F4"/>
+            <text x="12" y="18" text-anchor="middle" font-size="8" font-weight="700" fill="#4285F4" font-family="Arial,sans-serif">31</text>
+          </svg>
+          Add to Google Calendar
+        </a>
+        <a href="/calendar.ics" class="cal-btn" download>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="4" width="20" height="18" rx="2" fill="white"/>
+            <path d="M2 9h20V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3z" fill="#FF3B30"/>
+            <rect x="7" y="2" width="2" height="4" rx="1" fill="#FF3B30"/>
+            <rect x="15" y="2" width="2" height="4" rx="1" fill="#FF3B30"/>
+            <text x="12" y="18" text-anchor="middle" font-size="8" font-weight="700" fill="#1C1C1E" font-family="Arial,sans-serif">31</text>
+          </svg>
+          Add to Apple Calendar
+        </a>
+      </div>
+      <p style="font-size:14px; color:rgba(245,234,215,0.3); margin-top:12px; letter-spacing:1px;">RSVP if you can. Or just show up.</p>
     </div>
 
     <div style="text-align:center; padding: 60px 20px 20px;">
