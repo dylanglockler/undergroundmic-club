@@ -104,9 +104,9 @@
 
     .hero-sub {
       font-family: 'Special Elite', cursive;
-      font-size: clamp(13px, 4vw, 18px);
+      font-size: clamp(12px, 3.3vw, 17px);
       font-weight: 700;
-      letter-spacing: clamp(1.5px, 0.6vw, 3px);
+      letter-spacing: clamp(1px, 0.45vw, 2.2px);
       white-space: nowrap;
       color: var(--teal);
       text-transform: uppercase;
@@ -227,8 +227,8 @@
     <!-- Hero -->
     <div class="hero">
       <h1 class="hero-title">The Underground <span>Mic</span></h1>
-      <p class="hero-sub">Your Speakeasy Karaoke Club</p>
       <span class="mic-icon">🎤</span>
+      <p class="hero-sub">Saturday Speakeasy Karaoke Club</p>
 
       <div class="carousel" id="carousel">
         <div class="carousel-track" id="carousel-track">
