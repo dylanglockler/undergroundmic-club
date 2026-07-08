@@ -52,20 +52,6 @@
     /* Hero */
     .hero { text-align: center; padding: 60px 20px 40px; }
 
-    .hero-badge {
-      display: inline-block;
-      font-family: 'Special Elite', cursive;
-      font-size: 11px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--amber);
-      border: 1px solid rgba(255,184,48,0.33);
-      padding: 6px 18px;
-      border-radius: 2px;
-      margin-bottom: 24px;
-      background: rgba(255,184,48,0.06);
-    }
-
     .mic-icon {
       font-size: 64px;
       display: block;
@@ -197,6 +183,27 @@
     .carousel-slide img { filter: brightness(1.15) contrast(1.05); }
     .carousel-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 140px; background: linear-gradient(to bottom, transparent, var(--dark)); pointer-events: none; }
     .carousel-caption { position: absolute; bottom: 28px; left: 24px; right: 24px; font-family: 'Special Elite', cursive; font-size: clamp(18px, 4.5vw, 30px); font-style: normal; letter-spacing: 1px; line-height: 1.15; text-align: left; color: rgba(245,234,215,0.72); text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 4px 20px rgba(0,0,0,0.7); z-index: 2; }
+    .carousel-caption-typewriter {
+      display: inline-block; white-space: nowrap; overflow: hidden; width: 0;
+      animation-name: captionType;
+      animation-duration: 2.6s;
+      animation-timing-function: steps(17, end);
+      animation-delay: 0.6s;
+      animation-fill-mode: forwards;
+    }
+    .carousel-caption-typewriter::after {
+      content: ''; position: absolute; right: 0; bottom: 0.02em;
+      width: 0.55em; height: 1.05em;
+      background: rgba(245,234,215,0.85);
+      animation-name: captionCaret;
+      animation-duration: 0.8s;
+      animation-timing-function: step-end;
+      animation-delay: 3.2s;
+      animation-iteration-count: 5;
+      animation-fill-mode: forwards;
+    }
+    @keyframes captionType { to { width: 17ch; } }
+    @keyframes captionCaret { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 0; } }
     .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.45); border: 1px solid rgba(255,184,48,0.3); color: var(--amber); font-size: 28px; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: all 0.2s; line-height: 1; }
     .carousel-btn:hover { background: rgba(255,184,48,0.2); }
     .carousel-prev { left: 12px; }
@@ -217,10 +224,9 @@
 
     <!-- Hero -->
     <div class="hero">
-      <div class="hero-badge">Members Only · Private Access</div>
-      <span class="mic-icon">🎤</span>
       <h1 class="hero-title">The Underground <span>Mic</span></h1>
       <p class="hero-sub">Your Speakeasy Karaoke Club</p>
+      <span class="mic-icon">🎤</span>
 
       <div class="carousel" id="carousel">
         <div class="carousel-track" id="carousel-track">
@@ -230,6 +236,7 @@
               <source src="/images/IMG_9554.mp4" type="video/mp4">
             </video>
             <div class="carousel-fade"></div>
+            <div class="carousel-caption carousel-caption-typewriter">You're invited...</div>
           </div>
 
           <div class="carousel-slide">
