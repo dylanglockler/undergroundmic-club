@@ -124,7 +124,7 @@
       position: relative;
       display: inline-block;
       padding: 14px 28px 12px;
-      margin: 0 auto 40px;
+      margin: 0 auto 16px;
       background: rgba(0,229,204,0.05);
       box-shadow:
         5px -4px 11px -3px rgba(0,229,204,0.28),
@@ -166,6 +166,20 @@
     .sub-badge-smudge.b { bottom: -5px; right: 24%; width: 18px; height: 7px; background: rgba(0,229,204,0.13); }
     .sub-badge-smudge.c { top: 30%; left: -6px; width: 8px; height: 16px; background: rgba(0,229,204,0.15); }
     .sub-badge-smudge.d { top: 15%; right: -5px; width: 9px; height: 14px; background: rgba(0,229,204,0.12); }
+
+    .sub-badge-gap {
+      position: absolute;
+      background: var(--dark);
+      z-index: 2;
+      pointer-events: none;
+      filter: blur(0.6px);
+    }
+    .sub-badge-gap.a { top: -2px; left: 9%; width: 7%; height: 8px; }
+    .sub-badge-gap.b { top: -2px; right: 20%; width: 4%; height: 8px; }
+    .sub-badge-gap.c { bottom: -2px; left: 32%; width: 8%; height: 8px; }
+    .sub-badge-gap.d { bottom: -2px; right: 11%; width: 5%; height: 8px; }
+    .sub-badge-gap.e { left: -2px; top: 22%; width: 8px; height: 10%; }
+    .sub-badge-gap.f { right: -2px; top: 58%; width: 8px; height: 12%; }
 
     .hero-sub {
       font-family: 'Special Elite', cursive;
@@ -307,6 +321,12 @@
         <span class="sub-badge-smudge b"></span>
         <span class="sub-badge-smudge c"></span>
         <span class="sub-badge-smudge d"></span>
+        <span class="sub-badge-gap a"></span>
+        <span class="sub-badge-gap b"></span>
+        <span class="sub-badge-gap c"></span>
+        <span class="sub-badge-gap d"></span>
+        <span class="sub-badge-gap e"></span>
+        <span class="sub-badge-gap f"></span>
         <p class="hero-sub">Saturday Speakeasy Karaoke Club</p>
       </div>
 
