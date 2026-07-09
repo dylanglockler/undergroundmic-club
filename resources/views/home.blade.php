@@ -126,60 +126,19 @@
       padding: 14px 28px 12px;
       margin: 0 auto 16px;
       background: rgba(0,229,204,0.05);
-      box-shadow:
-        5px -4px 11px -3px rgba(0,229,204,0.28),
-        -7px 5px 13px -3px rgba(0,229,204,0.22),
-        6px 8px 15px -4px rgba(0,229,204,0.16),
-        -4px -6px 12px -4px rgba(0,229,204,0.14),
-        0 0 20px rgba(0,229,204,0.1),
-        inset 0 0 16px rgba(0,0,0,0.4);
+      border: 2px solid rgba(0,229,204,0.55);
+      border-radius: 3px;
+      box-shadow: 0 0 22px rgba(0,229,204,0.28), inset 0 0 16px rgba(0,0,0,0.4);
     }
 
     .sub-badge::before {
       content: '';
       position: absolute;
-      inset: 0;
-      border: 2.5px solid rgba(0,229,204,0.55);
-      border-radius: 2px 5px 3px 6px;
-      filter: url(#stampRough1);
-      pointer-events: none;
-    }
-
-    .sub-badge::after {
-      content: '';
-      position: absolute;
       inset: 5px;
-      border: 1px solid rgba(0,229,204,0.32);
-      border-radius: 4px 2px 6px 3px;
-      filter: url(#stampRough2);
+      border: 1px solid rgba(0,229,204,0.35);
+      border-radius: 2px;
       pointer-events: none;
     }
-
-    .sub-badge-smudge {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(0,229,204,0.16);
-      filter: blur(3px);
-      pointer-events: none;
-    }
-    .sub-badge-smudge.a { top: -6px; left: 18%; width: 14px; height: 6px; }
-    .sub-badge-smudge.b { bottom: -5px; right: 24%; width: 18px; height: 7px; background: rgba(0,229,204,0.13); }
-    .sub-badge-smudge.c { top: 30%; left: -6px; width: 8px; height: 16px; background: rgba(0,229,204,0.15); }
-    .sub-badge-smudge.d { top: 15%; right: -5px; width: 9px; height: 14px; background: rgba(0,229,204,0.12); }
-
-    .sub-badge-gap {
-      position: absolute;
-      background: var(--dark);
-      z-index: 2;
-      pointer-events: none;
-      filter: blur(0.6px);
-    }
-    .sub-badge-gap.a { top: -2px; left: 9%; width: 7%; height: 8px; }
-    .sub-badge-gap.b { top: -2px; right: 20%; width: 4%; height: 8px; }
-    .sub-badge-gap.c { bottom: -2px; left: 32%; width: 8%; height: 8px; }
-    .sub-badge-gap.d { bottom: -2px; right: 11%; width: 5%; height: 8px; }
-    .sub-badge-gap.e { left: -2px; top: 22%; width: 8px; height: 10%; }
-    .sub-badge-gap.f { right: -2px; top: 58%; width: 8px; height: 12%; }
 
     .hero-sub {
       font-family: 'Special Elite', cursive;
@@ -299,16 +258,6 @@
   </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute">
-  <filter id="stampRough1">
-    <feTurbulence type="turbulence" baseFrequency="0.045" numOctaves="2" seed="3" result="noise" />
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="4.5" xChannelSelector="R" yChannelSelector="G" />
-  </filter>
-  <filter id="stampRough2">
-    <feTurbulence type="turbulence" baseFrequency="0.06" numOctaves="2" seed="7" result="noise" />
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.5" xChannelSelector="R" yChannelSelector="G" />
-  </filter>
-</svg>
 <div class="app">
   <div class="content">
 
@@ -317,16 +266,6 @@
       <h1 class="hero-title">The Underground <span>Mic</span></h1>
       <span class="mic-icon">🎤</span>
       <div class="sub-badge">
-        <span class="sub-badge-smudge a"></span>
-        <span class="sub-badge-smudge b"></span>
-        <span class="sub-badge-smudge c"></span>
-        <span class="sub-badge-smudge d"></span>
-        <span class="sub-badge-gap a"></span>
-        <span class="sub-badge-gap b"></span>
-        <span class="sub-badge-gap c"></span>
-        <span class="sub-badge-gap d"></span>
-        <span class="sub-badge-gap e"></span>
-        <span class="sub-badge-gap f"></span>
         <p class="hero-sub">Saturday Speakeasy Karaoke Club</p>
       </div>
 
