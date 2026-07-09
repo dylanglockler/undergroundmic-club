@@ -53,12 +53,30 @@
     .hero { text-align: center; padding: 60px 20px 40px; }
 
     .mic-icon {
+      position: relative;
       font-size: 64px;
       display: block;
       margin: 0 auto 20px;
-      filter: drop-shadow(0 0 20px rgba(255,45,85,0.5));
+      filter: drop-shadow(0 0 20px rgba(255,45,85,0.6)) drop-shadow(0 0 42px rgba(255,184,48,0.4));
       animation: float 3s ease-in-out infinite;
       font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    }
+
+    .mic-icon::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 170px; height: 170px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255,45,85,0.4) 0%, rgba(255,184,48,0.22) 42%, transparent 72%);
+      filter: blur(8px);
+      z-index: -1;
+      animation: auraPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes auraPulse {
+      0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.94); }
+      50%      { opacity: 1; transform: translate(-50%, -50%) scale(1.06); }
     }
 
     @keyframes float {
@@ -102,6 +120,53 @@
       95%       { opacity: 0.6; }
     }
 
+    .sub-badge {
+      position: relative;
+      display: inline-block;
+      padding: 14px 28px 12px;
+      margin: 0 auto 40px;
+      background: rgba(0,229,204,0.05);
+      box-shadow:
+        5px -4px 11px -3px rgba(0,229,204,0.28),
+        -7px 5px 13px -3px rgba(0,229,204,0.22),
+        6px 8px 15px -4px rgba(0,229,204,0.16),
+        -4px -6px 12px -4px rgba(0,229,204,0.14),
+        0 0 20px rgba(0,229,204,0.1),
+        inset 0 0 16px rgba(0,0,0,0.4);
+    }
+
+    .sub-badge::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2.5px solid rgba(0,229,204,0.55);
+      border-radius: 2px 5px 3px 6px;
+      filter: url(#stampRough1);
+      pointer-events: none;
+    }
+
+    .sub-badge::after {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border: 1px solid rgba(0,229,204,0.32);
+      border-radius: 4px 2px 6px 3px;
+      filter: url(#stampRough2);
+      pointer-events: none;
+    }
+
+    .sub-badge-smudge {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(0,229,204,0.16);
+      filter: blur(3px);
+      pointer-events: none;
+    }
+    .sub-badge-smudge.a { top: -6px; left: 18%; width: 14px; height: 6px; }
+    .sub-badge-smudge.b { bottom: -5px; right: 24%; width: 18px; height: 7px; background: rgba(0,229,204,0.13); }
+    .sub-badge-smudge.c { top: 30%; left: -6px; width: 8px; height: 16px; background: rgba(0,229,204,0.15); }
+    .sub-badge-smudge.d { top: 15%; right: -5px; width: 9px; height: 14px; background: rgba(0,229,204,0.12); }
+
     .hero-sub {
       font-family: 'Special Elite', cursive;
       font-size: clamp(12px, 3.3vw, 17px);
@@ -110,7 +175,6 @@
       white-space: nowrap;
       color: var(--teal);
       text-transform: uppercase;
-      margin-bottom: 40px;
       text-shadow: 0 0 20px rgba(0,229,204,0.5);
     }
 
@@ -221,6 +285,16 @@
   </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="stampRough1">
+    <feTurbulence type="turbulence" baseFrequency="0.045" numOctaves="2" seed="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="4.5" xChannelSelector="R" yChannelSelector="G" />
+  </filter>
+  <filter id="stampRough2">
+    <feTurbulence type="turbulence" baseFrequency="0.06" numOctaves="2" seed="7" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.5" xChannelSelector="R" yChannelSelector="G" />
+  </filter>
+</svg>
 <div class="app">
   <div class="content">
 
@@ -228,7 +302,13 @@
     <div class="hero">
       <h1 class="hero-title">The Underground <span>Mic</span></h1>
       <span class="mic-icon">🎤</span>
-      <p class="hero-sub">Saturday Speakeasy Karaoke Club</p>
+      <div class="sub-badge">
+        <span class="sub-badge-smudge a"></span>
+        <span class="sub-badge-smudge b"></span>
+        <span class="sub-badge-smudge c"></span>
+        <span class="sub-badge-smudge d"></span>
+        <p class="hero-sub">Saturday Speakeasy Karaoke Club</p>
+      </div>
 
       <div class="carousel" id="carousel">
         <div class="carousel-track" id="carousel-track">
