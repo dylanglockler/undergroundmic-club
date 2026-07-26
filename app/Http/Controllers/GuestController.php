@@ -46,7 +46,8 @@ class GuestController extends Controller
         };
 
         $prompt = "You are a fun, witty assistant for \"The Underground Mic\" — a monthly basement speakeasy karaoke party.\n\n"
-            . "A guest named {$name} has just signed up for a {$method} reminder for the next party on {$partyDate} at 7PM.\n"
+            . "A guest named {$name} has just signed up for a {$method} reminder for the next party on {$partyDate}.\n"
+            . "The party starts at exactly 7:00 PM — never state any other start time.\n"
             . "Their reminder preference: {$reminderLabel}.\n\n"
             . "Write them a short, warm, playful confirmation message (3-4 sentences) in the speakeasy/dive-bar-karaoke spirit. "
             . "Be fun, a little cheeky, encouraging. Reference the party name and date. End with a hype line about karaoke. "
@@ -67,7 +68,7 @@ class GuestController extends Controller
 
     private function nextPartyDate(): \DateTime
     {
-        $now = new \DateTime('now', new \DateTimeZone('America/Chicago'));
+        $now = new \DateTime('now', new \DateTimeZone('America/Los_Angeles'));
         $year = (int) $now->format('Y');
         $month = (int) $now->format('n');
 
@@ -83,7 +84,7 @@ class GuestController extends Controller
 
     private function lastSaturday(int $year, int $month): \DateTime
     {
-        $lastDay = new \DateTime("last day of {$year}-{$month}", new \DateTimeZone('America/Chicago'));
+        $lastDay = new \DateTime("last day of {$year}-{$month}", new \DateTimeZone('America/Los_Angeles'));
         $dow = (int) $lastDay->format('w'); // 0=Sun 6=Sat
         $offset = ($dow >= 6) ? 0 : $dow + 1;
         $lastDay->modify("-{$offset} days");

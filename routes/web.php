@@ -4,10 +4,10 @@ use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $now = now()->setTimezone('America/Chicago');
+    $now = now()->setTimezone('America/Los_Angeles');
     $year = $now->year; $month = $now->month;
     $lastSat = function(int $y, int $m) {
-        $d = \Carbon\Carbon::create($y, $m)->endOfMonth()->setTimezone('America/Chicago');
+        $d = \Carbon\Carbon::create($y, $m)->endOfMonth()->setTimezone('America/Los_Angeles');
         while ($d->dayOfWeek !== 6) $d->subDay();
         return $d;
     };
@@ -22,7 +22,7 @@ Route::get('/', function () {
     $gcalUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
         . '&text=' . rawurlencode('The Underground Mic — Speakeasy Karaoke')
         . '&dates=' . $gcalDates
-        . '&ctz=America/Chicago'
+        . '&ctz=America/Los_Angeles'
         . '&recur=' . rawurlencode('RRULE:FREQ=MONTHLY;BYDAY=-1SA')
         . '&details=' . rawurlencode('Monthly basement speakeasy karaoke party. Members only. Last Saturday of every month, 7PM.');
 
@@ -36,7 +36,7 @@ Route::get('/', function () {
 Route::post('/guests', [GuestController::class, 'store'])->name('guests.store');
 
 Route::get('/calendar.ics', function () {
-    $tz = 'America/Chicago';
+    $tz = 'America/Los_Angeles';
     $now = now()->setTimezone($tz);
 
     $anchor = \Carbon\Carbon::create($now->year, $now->month)->endOfMonth()->setTimezone($tz);

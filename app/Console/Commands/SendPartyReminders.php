@@ -61,7 +61,7 @@ class SendPartyReminders extends Command
 
     private function nextPartyDate(): \Carbon\Carbon
     {
-        $now = now()->setTimezone('America/Chicago');
+        $now = now()->setTimezone('America/Los_Angeles');
         $year  = $now->year;
         $month = $now->month;
 
@@ -76,7 +76,7 @@ class SendPartyReminders extends Command
 
     private function lastSaturday(int $year, int $month): \Carbon\Carbon
     {
-        $last = \Carbon\Carbon::create($year, $month)->endOfMonth()->setTimezone('America/Chicago');
+        $last = \Carbon\Carbon::create($year, $month)->endOfMonth()->setTimezone('America/Los_Angeles');
         while ($last->dayOfWeek !== 6) {
             $last->subDay();
         }

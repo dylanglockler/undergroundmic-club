@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This App Is
 
-Guest management system for **The Underground Mic** — a monthly basement speakeasy karaoke party (last Saturday of each month, 7PM America/Chicago). Guests sign up on the public homepage, choose a reminder method (email, calendar, or SMS), and receive automated reminders before the event. Hosts manage guests and send blasts via a Filament admin panel at `/admin`.
+Guest management system for **The Underground Mic** — a monthly basement speakeasy karaoke party in Oakland, CA (last Saturday of each month, 7PM America/Los_Angeles). Guests sign up on the public homepage, choose a reminder method (email, calendar, or SMS), and receive automated reminders before the event. Hosts manage guests and send blasts via a Filament admin panel at `/admin`.
 
 ## Commands
 
@@ -60,7 +60,7 @@ Spatie `laravel-permission` manages roles. Only the `host` role grants admin pan
 
 ### Party Date Calculation
 
-The next party date (last Saturday of each month at 7PM America/Chicago) is computed with Carbon and is **duplicated** in `web.php`, `GuestController`, `SendPartyReminders`, and `Blast`. Any change to party timing must be updated in all four places.
+The next party date (last Saturday of each month at 7PM America/Los_Angeles) is computed with Carbon and is **duplicated** in `web.php`, `GuestController`, `SendPartyReminders`, and `Blast`. Any change to party timing must be updated in all four places.
 
 ### AI Integration
 

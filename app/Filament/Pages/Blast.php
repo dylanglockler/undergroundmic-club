@@ -168,9 +168,9 @@ class Blast extends Page implements HasSchemas
         $partyDate = $this->nextPartyDate()->format('F j, Y');
 
         $prompt = $type === 'text'
-            ? "Write a short, fun SMS reminder (under 160 characters) for \"The Underground Mic\" — a monthly basement speakeasy karaoke party. Party is on {$partyDate} at 7PM. Speakeasy voice, playful. No emojis."
+            ? "Write a short, fun SMS reminder (under 160 characters) for \"The Underground Mic\" — a monthly basement speakeasy karaoke party. Party is on {$partyDate}. The party starts at exactly 7:00 PM — never state any other start time. Speakeasy voice, playful. No emojis."
             : "Write a fun, witty email reminder for \"The Underground Mic\" — a monthly basement speakeasy karaoke party.\n\n"
-                . "Next party: {$partyDate} at 7PM.\n\n"
+                . "Next party: {$partyDate}. The party starts at exactly 7:00 PM — never state any other start time.\n\n"
                 . "Short (4-6 sentences), speakeasy voice — playful, warm, a little cheeky. Encourage people to come, "
                 . "mention bringing friends. One or two emojis max. Sign off as \"The Underground Mic\".\n\n"
                 . "Format exactly:\n<subject>subject line here</subject>\n<email body>\nbody here\n</email body>";
@@ -200,12 +200,12 @@ class Blast extends Page implements HasSchemas
 
     private function nextPartyDate(): \Carbon\Carbon
     {
-        $now   = now()->setTimezone('America/Chicago');
+        $now   = now()->setTimezone('America/Los_Angeles');
         $year  = $now->year;
         $month = $now->month;
 
         $lastSat = function (int $y, int $m) {
-            $d = \Carbon\Carbon::create($y, $m)->endOfMonth()->setTimezone('America/Chicago');
+            $d = \Carbon\Carbon::create($y, $m)->endOfMonth()->setTimezone('America/Los_Angeles');
             while ($d->dayOfWeek !== 6) $d->subDay();
             return $d;
         };
