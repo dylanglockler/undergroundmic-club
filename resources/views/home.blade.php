@@ -574,6 +574,7 @@ async function handleSubmit() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
       },
       body: JSON.stringify({
@@ -585,6 +586,13 @@ async function handleSubmit() {
         reminder_time: document.getElementById('reminder_time').value,
       }),
     });
+
+    if (res.status === 419) {
+      showError('Your session expired. Please refresh the page and try again.');
+      btn.disabled = false;
+      btn.textContent = "Sign Me Up 🎤";
+      return;
+    }
 
     const data = await res.json();
 
