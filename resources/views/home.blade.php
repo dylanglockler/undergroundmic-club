@@ -391,9 +391,9 @@
       <ul class="rules-list">
         <li class="rule-item"><span class="rule-num">01</span><span class="rule-text">No judgment. We're all here to have a good time, not to audition for The Voice.</span></li>
         <li class="rule-item"><span class="rule-num">02</span><span class="rule-text">Singers, fans, teens, kids, well-trained pups... come as you are. There's room at the inn.</span></li>
-        <li class="rule-item"><span class="rule-num">03</span><span class="rule-text">Invite only — don't post the address publicly. Tell your friends personally. Sharing is the Speakeasy way.</span></li>
-        <li class="rule-item"><span class="rule-num">04</span><span class="rule-text">We got the booze, beer, and wine. Bring something if you want, or just roll up.</span></li>
-        <li class="rule-item"><span class="rule-num">05</span><span class="rule-text">Cheer loudly for every performer. The vibe you bring is the vibe we share.</span></li>
+        <li class="rule-item"><span class="rule-num">03</span><span class="rule-text">Invite only — please don't post the address publicly. Whisper the location. Leave no trail.</span></li>
+        <li class="rule-item"><span class="rule-num">04</span><span class="rule-text">No charge at the door; just bring something to share with your fellow speakeasy peeps.</span></li>
+        <li class="rule-item"><span class="rule-num">05</span><span class="rule-text">At the Underground Mic, everyone gets applause. Cheer loudly and often. :)</span></li>
       </ul>
     </div>
 
@@ -420,19 +420,6 @@
               <span class="checkmark">🎉</span>
               <h4>You're on the list!</h4>
               <p id="success-text"></p>
-              <div id="success-cal" style="display:none; margin-top:20px; border-top:1px solid rgba(0,229,204,0.15); padding-top:20px;">
-                <p style="font-family:'Special Elite',cursive; font-size:10px; letter-spacing:2px; color:rgba(0,229,204,0.6); text-transform:uppercase; margin-bottom:14px;">Save the Date</p>
-                <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-                  <a id="success-gcal" href="#" target="_blank" rel="noopener" class="cal-btn" style="font-size:10px; padding:8px 16px;">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="18" rx="2" fill="white"/><path d="M2 9h20V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3z" fill="#4285F4"/><rect x="7" y="2" width="2" height="4" rx="1" fill="#4285F4"/><rect x="15" y="2" width="2" height="4" rx="1" fill="#4285F4"/><text x="12" y="18" text-anchor="middle" font-size="8" font-weight="700" fill="#4285F4" font-family="Arial,sans-serif">31</text></svg>
-                    Google Calendar
-                  </a>
-                  <a href="/calendar.ics" class="cal-btn" style="font-size:10px; padding:8px 16px;" download>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="18" rx="2" fill="white"/><path d="M2 9h20V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3z" fill="#FF3B30"/><rect x="7" y="2" width="2" height="4" rx="1" fill="#FF3B30"/><rect x="15" y="2" width="2" height="4" rx="1" fill="#FF3B30"/><text x="12" y="18" text-anchor="middle" font-size="8" font-weight="700" fill="#1C1C1E" font-family="Arial,sans-serif">31</text></svg>
-                    Apple Calendar
-                  </a>
-                </div>
-              </div>
             </div>
 
             <div id="form-fields">
@@ -508,9 +495,6 @@
 </div>
 
 <script>
-const gcalUrl = "{{ $gcalUrl }}";
-document.getElementById('success-gcal').href = gcalUrl;
-
 const partyTime = new Date({{ $partyTimestamp }} * 1000);
 
 function updateCountdown() {
@@ -607,7 +591,7 @@ async function handleSubmit() {
     document.getElementById('form-fields').style.display = 'none';
     document.getElementById('success-text').textContent = data.message || "See you at The Underground Mic!";
     document.getElementById('success-msg').style.display = 'block';
-    document.getElementById('success-cal').style.display = 'block';
+    document.getElementById('success-msg').scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   } catch (e) {
     showError('Network error. Please try again.');

@@ -38,7 +38,7 @@ npm run build
 
 **Public signup** (`routes/web.php` → `GuestController`):
 - Guest submits form on homepage, choosing reminder method (email/calendar/text) and timing (1week/1day/dayof)
-- On success, calls Claude (`claude-sonnet-4-6`) to generate a personalized 3-4 sentence confirmation message
+- On success, returns a fixed confirmation message stating the next party date (no AI call)
 
 **Automated reminders** (`app/Console/Commands/SendPartyReminders.php`):
 - Runs daily at 10AM via scheduler (defined in `routes/console.php`)
@@ -64,7 +64,7 @@ The next party date (last Saturday of each month at 7PM America/Los_Angeles) is 
 
 ### AI Integration
 
-Claude API calls are made directly via HTTP in `GuestController@draftConfirmation` and `Blast@callClaude`. The API key comes from `config/services.php` → `ANTHROPIC_API_KEY`. Model: `claude-sonnet-4-6`, API version header: `2023-06-01`.
+Claude API calls are made directly via HTTP in `Blast@callClaude` (admin blast drafting). The API key comes from `config/services.php` → `ANTHROPIC_API_KEY`. Model: `claude-sonnet-4-6`, API version header: `2023-06-01`.
 
 ### Email
 

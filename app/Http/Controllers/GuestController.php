@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Guest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
 class GuestController extends Controller
 {
@@ -21,49 +20,11 @@ class GuestController extends Controller
 
         Guest::create($validated);
 
-        $confirmationMessage = $this->draftConfirmation(
-            $validated['name'],
-            $validated['method'],
-            $validated['reminder_time']
-        );
-
-        return response()->json(['message' => $confirmationMessage]);
-    }
-
-    private function draftConfirmation(string $name, string $method, string $reminderTime): string
-    {
-        $apiKey = config('services.anthropic.key');
-        if (! $apiKey) {
-            return "You're on the list! See you at The Underground Mic. 🎤";
-        }
-
         $partyDate = $this->nextPartyDate()->format('F j, Y');
-        $reminderLabel = match ($reminderTime) {
-            '1week' => '1 week before',
-            '1day'  => '1 day before',
-            'dayof' => 'the day of the party',
-            default => $reminderTime,
-        };
 
-        $prompt = "You are a fun, witty assistant for \"The Underground Mic\" — a monthly basement speakeasy karaoke party.\n\n"
-            . "A guest named {$name} has just signed up for a {$method} reminder for the next party on {$partyDate}.\n"
-            . "The party starts at exactly 7:00 PM — never state any other start time.\n"
-            . "Their reminder preference: {$reminderLabel}.\n\n"
-            . "Write them a short, warm, playful confirmation message (3-4 sentences) in the speakeasy/dive-bar-karaoke spirit. "
-            . "Be fun, a little cheeky, encouraging. Reference the party name and date. End with a hype line about karaoke. "
-            . "Don't use emojis excessively. Keep it tight and charming.";
-
-        $response = Http::withHeaders([
-            'x-api-key'         => $apiKey,
-            'anthropic-version' => '2023-06-01',
-        ])->post('https://api.anthropic.com/v1/messages', [
-            'model'      => 'claude-sonnet-4-6',
-            'max_tokens' => 300,
-            'messages'   => [['role' => 'user', 'content' => $prompt]],
+        return response()->json([
+            'message' => "The next Underground Mic Karaoke Party will be on {$partyDate}.",
         ]);
-
-        return $response->json('content.0.text')
-            ?? "You're on the list! See you at The Underground Mic on {$partyDate}. 🎤";
     }
 
     private function nextPartyDate(): \DateTime
