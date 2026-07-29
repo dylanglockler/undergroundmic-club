@@ -165,7 +165,7 @@
     .info-card-value { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--cream); line-height: 1.4; }
 
     /* Rules */
-    .rules-section { max-width: 600px; margin: 0 auto 50px; padding: 0 20px; }
+    .rules-section { max-width: 600px; margin: 60px auto 50px; padding: 0 20px; }
     .section-title { font-family: 'Playfair Display', serif; font-size: 28px; font-style: italic; color: var(--amber); text-align: center; margin-bottom: 24px; text-shadow: 0 0 20px rgba(255,184,48,0.38); }
     .rules-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .rule-item { display: flex; align-items: flex-start; gap: 14px; background: var(--dark-card); border: 1px solid var(--mid); border-radius: 4px; padding: 14px 18px; }
@@ -289,7 +289,7 @@
           <div class="carousel-slide slide-8728">
             <img src="/images/IMG_8728.jpeg" alt="The Underground Mic">
             <div class="carousel-fade"></div>
-            <div class="carousel-caption">All ages welcome</div>
+            <div class="carousel-caption">Sing with family</div>
           </div>
 
           <div class="carousel-slide">
@@ -331,7 +331,7 @@
           <div class="carousel-slide slide-4202">
             <img src="/images/IMG_4202.JPG" alt="The Underground Mic">
             <div class="carousel-fade"></div>
-            <div class="carousel-caption">The bar is open...</div>
+            <div class="carousel-caption">Become a member...</div>
           </div>
 
 
@@ -385,18 +385,6 @@
       </div>
     </div>
 
-    <!-- House Rules -->
-    <div class="rules-section">
-      <h2 class="section-title">House Rules</h2>
-      <ul class="rules-list">
-        <li class="rule-item"><span class="rule-num">01</span><span class="rule-text">No judgment. We're all here to have a good time, not to audition for The Voice.</span></li>
-        <li class="rule-item"><span class="rule-num">02</span><span class="rule-text">Singers, fans, teens, kids, well-trained pups... come as you are. There's room at the inn.</span></li>
-        <li class="rule-item"><span class="rule-num">03</span><span class="rule-text">Invite only — please don't post the address publicly. Whisper the location. Leave no trail.</span></li>
-        <li class="rule-item"><span class="rule-num">04</span><span class="rule-text">No charge at the door; just bring something to share with your fellow speakeasy peeps.</span></li>
-        <li class="rule-item"><span class="rule-num">05</span><span class="rule-text">At the Underground Mic, everyone gets applause. Cheer loudly and often. :)</span></li>
-      </ul>
-    </div>
-
     <div style="padding: 30px 0;">
       <div class="neon-bar"></div>
     </div>
@@ -405,13 +393,13 @@
     <div class="reminder-section">
       <div class="reminder-card">
         <div class="reminder-header">
-          <h3>Join the Club</h3>
+          <h3>Sign Up to Join the Club</h3>
           <p>Never miss a mic drop moment. We'll ping you before the next party.</p>
         </div>
 
         <div id="signup-form">
           <div class="tabs">
-            <button class="tab active" data-tab="email" onclick="switchTab('email', this)">Sign Up</button>
+            <button class="tab active" data-tab="email" onclick="switchTab('email', this)">YOUR CONTACT INFO</button>
           </div>
 
           <div class="form-body">
@@ -479,6 +467,18 @@
         </a>
       </div>
       <p style="font-size:14px; color:rgba(245,234,215,0.3); margin-top:12px; letter-spacing:1px;">RSVP if you can. Or just show up.</p>
+    </div>
+
+    <!-- House Rules -->
+    <div class="rules-section">
+      <h2 class="section-title">House Rules</h2>
+      <ul class="rules-list">
+        <li class="rule-item"><span class="rule-num">01</span><span class="rule-text">No judgment. We're all here to have a good time, not to audition for The Voice.</span></li>
+        <li class="rule-item"><span class="rule-num">02</span><span class="rule-text">We'll have adult-only nights and all ages shows. We'll let you know.</span></li>
+        <li class="rule-item"><span class="rule-num">03</span><span class="rule-text">Invite only — please don't post the address publicly. Whisper the location. Leave no trail.</span></li>
+        <li class="rule-item"><span class="rule-num">04</span><span class="rule-text">No charge at the door; just bring something to share with your fellow speakeasy peeps.</span></li>
+        <li class="rule-item"><span class="rule-num">05</span><span class="rule-text">At the Underground Mic, everyone gets applause. Cheer loudly and often. :)</span></li>
+      </ul>
     </div>
 
     <div style="text-align:center; padding: 60px 20px 20px;">
