@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SignupConfirmationMail;
 use App\Models\Guest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class GuestController extends Controller
 {
@@ -18,9 +21,17 @@ class GuestController extends Controller
             'reminder_time' => 'required|in:1week,1day,dayof',
         ]);
 
-        Guest::create($validated);
+        $guest = Guest::create($validated);
 
         $partyDate = $this->nextPartyDate()->format('F j, Y');
+
+        if ($guest->method === 'email') {
+            try {
+                Mail::to($guest->contact)->send(new SignupConfirmationMail($guest));
+            } catch (\Throwable $e) {
+                Log::error('Signup confirmation email failed', ['guest_id' => $guest->id, 'error' => $e->getMessage()]);
+            }
+        }
 
         return response()->json([
             'message' => "The next Underground Mic Karaoke Party will be on {$partyDate}.",
