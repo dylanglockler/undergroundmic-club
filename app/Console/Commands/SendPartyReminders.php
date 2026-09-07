@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Support\PartyCalendar;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
@@ -12,7 +13,7 @@ class SendPartyReminders extends Command
 {
     public function handle(): void
     {
-        $partyDate = $this->nextPartyDate();
+        $partyDate = PartyCalendar::nextPartyDate();
         $now = now();
 
         $daysUntil = (int) $now->diffInDays($partyDate, false);
@@ -57,29 +58,5 @@ class SendPartyReminders extends Command
         }
 
         $this->info("Done. Sent to {$toRemind->count()} guest(s).");
-    }
-
-    private function nextPartyDate(): \Carbon\Carbon
-    {
-        $now = now()->setTimezone('America/Los_Angeles');
-        $year  = $now->year;
-        $month = $now->month;
-
-        $candidate = $this->lastSaturday($year, $month);
-        if ($candidate->lte($now)) {
-            $month++;
-            if ($month > 12) { $month = 1; $year++; }
-            $candidate = $this->lastSaturday($year, $month);
-        }
-        return $candidate;
-    }
-
-    private function lastSaturday(int $year, int $month): \Carbon\Carbon
-    {
-        $last = \Carbon\Carbon::create($year, $month)->endOfMonth()->setTimezone('America/Los_Angeles');
-        while ($last->dayOfWeek !== 6) {
-            $last->subDay();
-        }
-        return $last;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Mail\PartyReminderMail;
 use App\Models\Guest;
+use App\Support\PartyCalendar;
 use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Select;
@@ -165,7 +166,7 @@ class Blast extends Page implements HasSchemas
             return ['error' => 'ANTHROPIC_API_KEY not set.'];
         }
 
-        $partyDate = $this->nextPartyDate()->format('F j, Y');
+        $partyDate = PartyCalendar::nextPartyDate()->format('F j, Y');
 
         $prompt = $type === 'text'
             ? "Write a short, fun SMS reminder (under 160 characters) for \"The Underground Mic\" — a monthly basement speakeasy karaoke party. Party is on {$partyDate}. The party starts at exactly 7:00 PM — never state any other start time. Speakeasy voice, playful. No emojis."
@@ -196,27 +197,5 @@ class Blast extends Page implements HasSchemas
         }
 
         return ['body' => trim($text)];
-    }
-
-    private function nextPartyDate(): \Carbon\Carbon
-    {
-        $now   = now()->setTimezone('America/Los_Angeles');
-        $year  = $now->year;
-        $month = $now->month;
-
-        $lastSat = function (int $y, int $m) {
-            $d = \Carbon\Carbon::create($y, $m)->endOfMonth()->setTimezone('America/Los_Angeles');
-            while ($d->dayOfWeek !== 6) $d->subDay();
-            return $d;
-        };
-
-        $candidate = $lastSat($year, $month);
-        if ($candidate->lte($now)) {
-            $month++;
-            if ($month > 12) { $month = 1; $year++; }
-            $candidate = $lastSat($year, $month);
-        }
-
-        return $candidate;
     }
 }
