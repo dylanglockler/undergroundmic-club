@@ -6,7 +6,7 @@ Here's a riddle for you:
 I'm louder than a whisper, softer than a scream.<br>
 I live between the shower and the karaoke machine.<br>
 You'll find me at parties, in cars, in the rain.<br>
-I come out big on Saturdays to kill the weekday pain.
+When you really push your limits, I can help you cure your pain.
 
 **What am I?**
 
